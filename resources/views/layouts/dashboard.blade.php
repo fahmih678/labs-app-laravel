@@ -26,9 +26,9 @@
 <body>
 
     @include('includes.topbar')
-    {{-- @include('includes.sidebar') --}}
+    @include('includes.sidebar')
     @yield('content')
-    {{-- @include('includes.footer') --}}
+    @include('includes.footer')
 
     <!-- General JS Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -58,6 +58,8 @@
 
     <!-- Page Specific JS File -->
     <script src="{{ asset('stisla/assets/js/page/index.js') }}"></script>
+
+    @stack('script')
 </body>
 
 </html>

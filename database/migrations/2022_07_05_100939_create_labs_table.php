@@ -19,9 +19,11 @@ return new class extends Migration
             $table->string('code');
             $table->string('name');
             $table->text('description')->nullable();
-            $table->double('price');
+            $table->double('price_hourly');
             $table->string('path_file')->nullable();
             $table->boolean('is_available')->default(false);
+            $table->time('open_hour');
+            $table->time('close_hour');
             $table->timestamps();
             $table->softDeletes();
         });

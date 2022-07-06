@@ -40,7 +40,7 @@
                             class="fas fa-fire"></i><span>Dashboard</span></a>
                 </li>
                 <li class="nav-item @yield('lab-reservation-active')">
-                    <a href="{{ route('member.lab-reservation') }}" class="nav-link"><i class="fas fa-columns"></i>
+                    <a href="{{ route('member.lab-reservation.index') }}" class="nav-link"><i class="fas fa-columns"></i>
                         <span>Lab
                             Reservation</span></a>
                 </li>
