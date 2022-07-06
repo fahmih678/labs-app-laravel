@@ -14,30 +14,29 @@
                             <div class="new-user-table-lay">
                                 <table class="table table-bordered new-user-table">
                                     <tbody>
-                                        <tr>
-                                            <td>anisa@gmail.com</td>
-                                            <td>
-                                                <a class="btn btn-primary">Detail</a>
-                                                <a class="btn btn-success">Approve</a>
-                                                <a class="btn btn-danger">Disapprove</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>rumi@student.uns.ac.id</td>
-                                            <td>
-                                                <a class="btn btn-primary">Detail</a>
-                                                <a class="btn btn-success">Approve</a>
-                                                <a class="btn btn-danger">Disapprove</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>hana@student.uns.ac.id</td>
-                                            <td>
-                                                <a class="btn btn-primary">Detail</a>
-                                                <a class="btn btn-success">Approve</a>
-                                                <a class="btn btn-danger">Disapprove</a>
-                                            </td>
-                                        </tr>
+                                        @if ($newUser == null)
+                                            @foreach ($newUser as $user)
+                                                <tr>
+                                                    <td>{{ $user->email }}</td>
+                                                    <td>
+                                                        <button class="btn btn-primary">Detail</button>
+                                                        <form action="{{ route('admin.manajemen-user.approve') }}"
+                                                            method="post">
+                                                            @csrf
+                                                            {{ method_field('PUT') }}
+                                                            <input type="text" value="{{ $user->id }}"
+                                                                name="users_id" hidden>
+                                                            <button type="submit" class="btn btn-success">Approve</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @else
+                                            <tr>
+                                                Tidak ada User Baru
+                                            </tr>
+                                        @endif
+
                                     </tbody>
                                 </table>
                             </div>
@@ -51,30 +50,19 @@
                             <div class="user-table-lay">
                                 <table class="table table-bordered user-table">
                                     <tbody>
-                                        <tr>
-                                            <td>azizah@gmail.com</td>
-                                            <td>Azizah nur fitri</td>
-                                            <td>
-                                                <a class="btn btn-secondary btn-status">Member</a>
-                                                <a class="btn btn-primary">Detail</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>zaki@student.uns.ac.id</td>
-                                            <td>Zaki Hidayah</td>
-                                            <td>
-                                                <a class="btn btn-secondary btn-status">Admin</a>
-                                                <a class="btn btn-primary">Detail</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>liana@student.uns.ac.id</td>
-                                            <td>Liana Rahmawati</td>
-                                            <td>
-                                                <a class="btn btn-secondary btn-status">Member</a>
-                                                <a class="btn btn-primary">Detail</a>
-                                            </td>
-                                        </tr>
+                                        @foreach ($activeUser as $user)
+                                            <tr>
+                                                <td>{{ $user->email }}</td>
+                                                <td>{{ $user->username }}</td>
+                                                <td>
+                                                    @php
+                                                        $roleName = $user->roles->first()->name
+                                                    @endphp
+                                                    <a class="btn @if($roleName == 'member') btn-status @elseif($roleName == 'admin') btn-danger  @endif">{{ $roleName }}</a>
+                                                    {{-- <a class="btn btn-primary">Detail</a> --}}
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

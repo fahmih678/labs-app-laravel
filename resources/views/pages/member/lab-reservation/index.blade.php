@@ -35,11 +35,12 @@
                                     <input type="datetime-local" class="form-control" name="end_time" id="picker">
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
+                            
+                            <div class="col-lg-6" @if (Auth::user()->instansi?->code == 'uns')  hidden @endif>
+                                <div class="form-group" >
                                     <label for="invoice">Invoice</label>
                                     <input type="file" class="form-control" id="invoice" name="invoice"
-                                        placeholder="Upload here" @if (Auth::user()->instansi->code == 'uns')  @endif>
+                                        placeholder="Upload here"  >
                                 </div>
                             </div>
                         </div>

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->string('path_file')->nullable();
+            $table->string('total')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -43,7 +43,7 @@ Route::name('profile.')->prefix('profile')->controller(ProfileController::class)
     Route::put('/update', 'update')->name('update');
 });
 
-Route::name('admin.')->prefix('admin')->middleware(['auth:sanctum', 'can:are-admin'])->group(function(){
+Route::name('admin.')->prefix('admin')->middleware(['auth', 'can:are-admin'])->group(function(){
     Route::get('/',[AdminController::class, 'index'])->name('index');
     
     Route::name('manajemen-user.')->prefix('manajemen-users')->controller(ManajemenUserController::class)->group(function(){
@@ -53,6 +53,7 @@ Route::name('admin.')->prefix('admin')->middleware(['auth:sanctum', 'can:are-adm
         Route::get('/edit','edit')->name('edit');
         Route::put('/update','update')->name('update');
         Route::delete('/destroy','destroy')->name('destroy');
+        Route::put('/approve','approve')->name('approve');
     });
     Route::name('manajemen-lab.')->prefix('manajemen-labs')->controller(ManajemenLabController::class)->group(function(){
         Route::get('/', 'index')->name('index');
@@ -61,6 +62,11 @@ Route::name('admin.')->prefix('admin')->middleware(['auth:sanctum', 'can:are-adm
         Route::get('/edit/{slug}', 'edit')->name('edit');
         Route::put('/update', 'update')->name('update');
         Route::delete('/destroy/{slug}', 'destroy')->name('destroy');
+        Route::name('facility.')->prefix('facility')->group(function(){
+            Route::get('/create/{slug}', 'createFacility')->name('create');
+            Route::post('/store', 'storeFacility')->name('store');
+            Route::delete('/destroy', 'destroyFacility')->name('destroy');
+        });
     });
     Route::name('manajemen-reservation.')->prefix('manajemen-reservations')->controller(ManajemenReservationController::class)->group(function(){
         Route::get('/', 'index')->name('index');
@@ -69,6 +75,7 @@ Route::name('admin.')->prefix('admin')->middleware(['auth:sanctum', 'can:are-adm
         Route::get('/edit', 'edit')->name('edit');
         Route::put('/update', 'update')->name('update');
         Route::delete('/destroy', 'destroy')->name('destroy');
+        Route::put('/approve', 'approve')->name('approve');
     });
 });
 

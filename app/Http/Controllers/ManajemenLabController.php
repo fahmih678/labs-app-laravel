@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Facility;
 use App\Models\Lab;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -78,5 +79,12 @@ class ManajemenLabController extends Controller
         Storage::delete('public/labs/'.$lab->path_file);
         $lab->delete();
         return redirect()->route('admin.manajemen-lab.index')->with('success', 'Lab has been deleted');
+    }
+
+    public function createFacility($slug){
+        $lab = Lab::where('slug',$slug)->first();
+        // dd($lab);
+        $facilities = Facility::where('labs_id', $lab->id)->get();
+        return view('pages.admin.manajemen-lab.facility.create', compact('facilities'));
     }
 }

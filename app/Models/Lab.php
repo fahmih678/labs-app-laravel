@@ -13,4 +13,8 @@ class Lab extends Model
     public function reservations(){
         return $this->hasMany(Reservation::class);
     }
+
+    public function facilities(){
+        return $this->hasMany(Facility::class, 'labs_id', 'id');
+    }
 }

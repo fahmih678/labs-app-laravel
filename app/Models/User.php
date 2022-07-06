@@ -22,7 +22,9 @@ class User extends Authenticatable
         'email',
         'password',
         'firstname',
-        'lastname'
+        'lastname',
+        'is_active',
+        'instansis_id'
     ];
 
     /**
@@ -56,5 +58,13 @@ class User extends Authenticatable
         };
 
         return false;
+    }
+    
+    public function reservation(){
+        return $this->hasMany(Reservation::class);
+    }
+
+    public function instansi(){
+        return $this->belongsTo(Instansi::class, 'instansis_id', 'id');
     }
 }

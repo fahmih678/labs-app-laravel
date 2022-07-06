@@ -13,4 +13,8 @@ class Reservation extends Model
     public function lab(){
         return $this->belongsTo(Lab::class, 'labs_id', 'id');
     }
+    
+    public function user(){
+        return $this->belongsTo(User::class, 'users_id', 'id');
+    }
 }

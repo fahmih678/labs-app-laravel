@@ -23,15 +23,33 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>fahmi@student.uns.ac.id</td>
-                                        <td>Software Engineering</td>
-                                        <td>Sunday, May 22, 2022</td>
-                                        <td>5 hours ago</td>
-                                        <td><a href="" class="btn btn-status">Ordered</a></td>
-                                        <td><a href="" class="btn btn-primary"><img src="img/eye.png"
-                                                    alt=""></a></td>
-                                    </tr>
+                                    @foreach ($reservations as $reservation)
+                                        <tr>
+                                            <td>{{$reservation->user->email}}</td>
+                                            <td>{{$reservation->lab->name}}</td>
+                                            <td>{{$reservation->start_time}}</td>
+                                            <td>{{$reservation->end_time}}</td>
+                                            {{-- <td>5 hours ago</td> --}}
+                                            @php
+                                               $status =  $reservation->is_approved;
+                                            @endphp
+                                            <td><a href="" class="btn @if($status == 'pending') btn-status @elseif($status == 'not approved') btn-danger @elseif($status == 'approved') btn-success @endif">{{$status}}</a></td>
+                                            <td>
+                                                @if($status == 'approved')
+                                                Sudah di approved
+                                                @else
+                                                <form action="{{ route('admin.manajemen-reservation.approve') }}"
+                                                            method="post">
+                                                            @csrf
+                                                            {{ method_field('PUT') }}
+                                                            <input type="text" value="{{ $reservation->id }}"
+                                                                name="reservation_id" hidden>
+                                                            <button type="submit" class="btn btn-success">Approve</button>
+                                                        </form>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

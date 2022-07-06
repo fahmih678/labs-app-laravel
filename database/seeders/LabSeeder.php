@@ -22,7 +22,9 @@ class LabSeeder extends Seeder
             'code' => 'lsd',
             'name' => 'Software Engineering',
             'description' => 'Lab Software Engineering untuk praktikum membuat aplikasi',
-            'price' => 100000,
+            'price_hourly' => 100000,
+            'open_hour' => '07:00:00',
+            'close_hour' => '16:00:00'
         ]);
         Lab::updateOrCreate([
             'id' => 2
@@ -31,7 +33,9 @@ class LabSeeder extends Seeder
             'code' => 'lms',
             'name' => 'Multimedia Studio',
             'description' => 'Lab Jaringan untuk praktikum multimedia',
-            'price' => 120000,
+            'price_hourly' => 120000,
+            'open_hour' => '07:00:00',
+            'close_hour' => '16:00:00'
         ]);
         Lab::updateOrCreate([
             'id' => 3
@@ -40,7 +44,9 @@ class LabSeeder extends Seeder
             'code' => 'lcn',
             'name' => 'Computer Network',
             'description' => 'Lab Computer Network untuk praktikum Computer Network',
-            'price' => 200000,
+            'price_hourly' => 200000,
+            'open_hour' => '07:00:00',
+            'close_hour' => '16:00:00'
         ]);
 
 
