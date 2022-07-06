@@ -85,6 +85,25 @@ class ManajemenLabController extends Controller
         $lab = Lab::where('slug',$slug)->first();
         // dd($lab);
         $facilities = Facility::where('labs_id', $lab->id)->get();
-        return view('pages.admin.manajemen-lab.facility.create', compact('facilities'));
+        return view('pages.admin.manajemen-lab.facility.create', compact('facilities', 'lab'));
+    }
+
+    public function storeFacility(Request $request){
+        $slug = Str::of( $request->input('name'))->slug('-');
+        $file = $request->file('image');
+
+        $ekstensi = $file->getClientOriginalExtension();
+        $nama_file = $slug ."-". Carbon::now()->timestamp . "." . $ekstensi;
+        $file->storeAs('public/facilities', $nama_file);
+
+        Facility::create([
+            'labs_id' => $request->input('labs_id'),
+            'slug' => $slug,
+            'name' => $request->input('name'),
+            'total' => $request->input('total'),
+            'path_file' => $nama_file,
+            'description' => $request->input('description'),
+        ]);
+        return redirect()->route('admin.manajemen-lab.facility.create', ['slug' => $request->input('labs_slug')])->with('success', 'Facility has been added successfully');
     }
 }

@@ -19,7 +19,7 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container">
-            <a class="navbar-brand" href="#">Logo</a>
+            <a class="navbar-brand"  href="/"><img src="{{asset('img/logo2.png')}}" height="50px" width="50px" alt=""></a> <p style="font-weight: 700; "> Labs App</p>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

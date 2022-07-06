@@ -35,23 +35,26 @@
                                             </td>
                                             <td>
                                                 {{-- {{dd($lab->facilities)}} --}}
+                                                
+                                                <ul>
                                                 @if ($lab->facilities == null )   
                                                
                                                     Tidak ada Facilitas
 
                                                 @else
-                                                    <ul>
                                                         @foreach ($lab->facilities as $facility)
                                                             
                                                         <li>{{$facility->name}}</li>
                                                         <li>{{$facility->total}}</li>
-                                                        <a href="{{ route('admin.manajemen-lab.facility.create', ['slug'=>$lab->slug]) }}"
-                                                            class="btn btn-success">
-                                                            <img src="{{ asset('img/edit.png') }}" alt="">
-                                                        </a>
+                                                        
                                                         @endforeach
-                                                    </ul>
+                                                    
                                                 @endif
+                                                <a href="{{ route('admin.manajemen-lab.facility.create', ['slug'=>$lab->slug]) }}"
+                                                    class="btn btn-success">
+                                                    <img src="{{ asset('img/edit.png') }}" alt="">
+                                                </a>
+                                            </ul>
                                             </td>
                                             <td>
                                                 <a href="{{ route('admin.manajemen-lab.edit', ['slug' => $lab->slug]) }}"

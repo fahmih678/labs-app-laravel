@@ -10,25 +10,27 @@
                     <div class="add-lab-header">
                         <h2>Add Facility</h2>
                     </div>
-                    <form action="{{ route('admin.manajemen-lab.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.manajemen-lab.facility.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        <input type="text" value="{{$lab->id}}" name="labs_id" hidden>
+                        <input type="text" value="{{$lab->slug}}" name="labs_slug" hidden>
                         <div class="row add-lab-form">
                             <div class="row">
                                 <div class="col-6">
-                                    <label for="facility" class="form-label">Facility</label>
-                                    <input type="text" class="form-control" id="facility" placeholder="10 Computers" />
+                                    <label for="name" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Komputer" />
                                 </div>
                                 <div class="col-6">
-                                    <label for="img" class="form-label">Add Image</label>
-                                    <input type="text" class="form-control" id="img" placeholder="computers.png" />
+                                    <label for="image" class="form-label">Add Image</label>
+                                    <input type="file" class="form-control" id="image" name="image" placeholder="computers.png" />
                                 </div>
                                 <div class="col-6">
-                                    <label for="facility" class="form-label">Facility</label>
-                                    <input type="text" class="form-control" id="facility" placeholder="5 Camera" />
+                                    <label for="description" class="form-label">Description</label>
+                                    <input type="text" class="form-control" id="description" name="description" placeholder="masukkan deskripsi fasilitas" />
                                 </div>
                                 <div class="col-6">
-                                    <label for="img" class="form-label">Add Image</label>
-                                    <input type="text" class="form-control" id="img" placeholder="camera.png" />
+                                    <label for="total" class="form-label">Total</label>
+                                    <input type="text" class="form-control" id="total" name="total" placeholder="jumlah fasilitas : 10 buah" />
                                 </div>
                             </div>
                             {{-- <div class="row mt-4">

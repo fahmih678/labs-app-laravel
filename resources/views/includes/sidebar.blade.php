@@ -3,7 +3,7 @@
         <div class="sidebar-brand" style="margin-bottom: 50px">
             <img alt="image" src="{{ asset('stisla/assets/img/avatar/avatar-1.png') }}" class="rounded-circle mr-1"
                 width="30">
-            <a href="index.html">Lab Reservation</a>
+            <a href="/">Lab Reservation</a>
         </div>
         <ul class="sidebar-menu">
             <li class="nav-item @yield('profile-active')">

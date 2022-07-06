@@ -79,39 +79,20 @@
                 <hr class="schedule-border">
             </div>
             <div class="schedule-content">
+                @foreach ($labs as $lab)
+                    
                 <div class="row">
                     <div class="col-12">
                         <div class="schedule-content-one">
-                            <p class="schedule-content-title">Software Engineering</p>
-                            <p class="schedule-content-status">Tersedia</p>
-                            <p class="schedule-content-time-open">07.00</p>
+                            <p class="schedule-content-title">{{$lab->name}}</p>
+                            <p class="schedule-content-status">{{$lab->is_available? 'Available':'Not Available'}}</p>
+                            <p class="schedule-content-time-open">{{$lab->open_hour}}</p>
                             <p class="schedule-content-to">To</p>
-                            <p class="schedule-content-time-close">21.00</p>
+                            <p class="schedule-content-time-close">{{$lab->close_hour}}</p>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="schedule-content-one">
-                            <p class="schedule-content-title">Multimedia Studio</p>
-                            <p class="schedule-content-status edit-status-2">Dipakai</p>
-                            <p class="schedule-content-time-open">07.00</p>
-                            <p class="schedule-content-to">To</p>
-                            <p class="schedule-content-time-close">21.00</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="schedule-content-one">
-                            <p class="schedule-content-title">Computer Network</p>
-                            <p class="schedule-content-status edit-status-3">Tersedia</p>
-                            <p class="schedule-content-time-open">07.00</p>
-                            <p class="schedule-content-to">To</p>
-                            <p class="schedule-content-time-close">21.00</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
         <!-- End of Schedule -->
@@ -128,7 +109,7 @@
                                 <p class="room-status">Tersedia</p>
                                 <h6 class="room-title">{{ $lab->name }}</h6>
                                 <h6 class="room-open">Buka 08.00 - 15.00</h6>
-                                <img src="/img/room.png" class="card-img-top" alt="...">
+                                <img src="{{$lab->path_file}}" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <p class="card-text">{{ $lab->description }}</p>
                                     <h6><a href="#" class="room-book" data-bs-toggle="modal"
