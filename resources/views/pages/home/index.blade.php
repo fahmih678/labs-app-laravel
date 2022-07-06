@@ -106,9 +106,9 @@
                         data-aos-anchor-placement="top-bottom">
                         <div class="room-card">
                             <div class="card room-card-lay" style="width: 15rem;">
-                                <p class="room-status">Tersedia</p>
+                                <p class="room-status">{{$lab->is_available ? 'Tersedia' : 'Tidak Tersedia'}}</p>
                                 <h6 class="room-title">{{ $lab->name }}</h6>
-                                <h6 class="room-open">Buka 08.00 - 15.00</h6>
+                                <h6 class="room-open">Buka {{$lab->open_hour}} - {{$lab->close_hour}}</h6>
                                 <img src="{{$lab->path_file}}" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <p class="card-text">{{ $lab->description }}</p>

@@ -58,7 +58,6 @@
                                         <th scope="col">Facility Name</th>
                                         <th scope="col">Total</th>
                                         <th scope="col">Description</th>
-                                        <th scope="col">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -76,8 +75,8 @@
                                                 <td class="laboratory-des">{{ $facility->description }}
                                                 </td>
                                                 
-                                                <td>
-                                                    {{-- <a href="{{ route('admin.manajemen-lab.facility.edit', ['slug' => $facility->slug]) }}"
+                                                {{-- <td>
+                                                    <a href="{{ route('admin.manajemen-lab.facility.edit', ['slug' => $facility->slug]) }}"
                                                         class="btn btn-success">
                                                         <img src="{{ asset('img/edit.png') }}" alt="">
                                                     </a>
@@ -89,8 +88,8 @@
                                                         <button type="submit" class="btn btn-danger">
                                                             <img src="{{ asset('img/delete.png') }}" alt="">
                                                         </button>
-                                                    </form> --}}
-                                                </td>
+                                                    </form>
+                                                </td> --}}
                                             </tr>
                                         @endforeach 
                                     @endif

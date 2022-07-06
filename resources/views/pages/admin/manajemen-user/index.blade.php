@@ -14,7 +14,7 @@
                             <div class="new-user-table-lay">
                                 <table class="table table-bordered new-user-table">
                                     <tbody>
-                                        @if ($newUser == null)
+                                        @if (!($newUser->isEmpty()))
                                             @foreach ($newUser as $user)
                                                 <tr>
                                                     <td>{{ $user->email }}</td>
@@ -50,19 +50,23 @@
                             <div class="user-table-lay">
                                 <table class="table table-bordered user-table">
                                     <tbody>
-                                        @foreach ($activeUser as $user)
-                                            <tr>
-                                                <td>{{ $user->email }}</td>
-                                                <td>{{ $user->username }}</td>
-                                                <td>
-                                                    @php
-                                                        $roleName = $user->roles->first()->name
-                                                    @endphp
-                                                    <a class="btn @if($roleName == 'member') btn-status @elseif($roleName == 'admin') btn-danger  @endif">{{ $roleName }}</a>
-                                                    {{-- <a class="btn btn-primary">Detail</a> --}}
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                                        @if ($activeUser->isEmpty())
+                                            <tr>Tidak ada user active</tr>
+                                        @else
+                                            @foreach ($activeUser as $user)
+                                                <tr>
+                                                    <td>{{ $user->email }}</td>
+                                                    <td>{{ $user->username }}</td>
+                                                    <td>
+                                                        @php
+                                                            $roleName = $user->roles->first()->name
+                                                        @endphp
+                                                        <a class="btn @if($roleName == 'member') btn-status @elseif($roleName == 'admin') btn-danger  @endif">{{ $roleName }}</a>
+                                                        {{-- <a class="btn btn-primary">Detail</a> --}}
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>

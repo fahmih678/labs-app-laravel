@@ -13,6 +13,7 @@ class MemberController extends Controller
         $user = Auth::user();
         $reservationTotal = Reservation::select('id')->where('users_id', $user->id)->count();
         $labTotal = Lab::select('id')->count();
-        return view('pages.member.dashboard.index', compact('user','reservationTotal', 'labTotal'));
+        $reservations = Reservation::join('labs','reservations.labs_id','=','labs.id')->select('reservations.id','labs.name','reservations.start_time', 'reservations.end_time', 'reservations.created_at','reservations.updated_at')->latest()->take(10)->get();
+        return view('pages.member.dashboard.index', compact('user','reservationTotal', 'labTotal', 'reservations'));
     }
 }

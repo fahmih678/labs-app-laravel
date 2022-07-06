@@ -53,7 +53,7 @@ class CreateNewUser implements CreatesNewUsers
             if ($instansi == null) {
                 return 'Instansi tidak ditemukan';
             }
-            $user = User::find($user->id)->update([
+            User::find($user->id)->update([
                 'instansis_id' => $instansi->id,
             ]);
         }

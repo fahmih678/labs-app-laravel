@@ -30,7 +30,7 @@
                                 <tbody>
                                     @foreach ($labs as $lab)
                                         <tr>
-                                            <td>{{ $lab->name }}</td>
+                                            <td><b>{{ $lab->name }}</b></td>
                                             <td class="laboratory-des">{{ $lab->description }}
                                             </td>
                                             <td>
@@ -44,8 +44,7 @@
                                                 @else
                                                         @foreach ($lab->facilities as $facility)
                                                             
-                                                        <li>{{$facility->name}}</li>
-                                                        <li>{{$facility->total}}</li>
+                                                        <li>{{$facility->name}} : {{$facility->total}}</li>
                                                         
                                                         @endforeach
                                                     

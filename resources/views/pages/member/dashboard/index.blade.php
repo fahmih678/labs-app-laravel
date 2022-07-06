@@ -40,6 +40,36 @@
                         </div>
                     </div>
                 </section>
+                <section class="section">
+                    <div class="row mt-4">
+                        <div class="col-12 history-lay p-4">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="reservation-table">
+                                        <table id="example" class="table table-striped" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>Labolatory Name</th>
+                                                    <th>Start Time</th>
+                                                    <th>End Time</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($reservations as $reservation)
+                                                    <tr>
+                                                        <td>{{ $reservation->name }}</td>
+                                                        <td>{{ $reservation->start_time }}</td>
+                                                        <td>{{ $reservation->end_time }}</td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
     </div>

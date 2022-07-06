@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             LabSeeder::class,
             InstansiSeeder::class,
+            UserSeeder::class,
         ]);
     }
 }
