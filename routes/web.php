@@ -54,6 +54,7 @@ Route::name('admin.')->prefix('admin')->middleware(['auth', 'can:are-admin'])->g
         Route::put('/update','update')->name('update');
         Route::delete('/destroy','destroy')->name('destroy');
         Route::put('/approve','approve')->name('approve');
+        Route::put('/disapprove', 'disapprove')->name('disapprove');
     });
     Route::name('manajemen-lab.')->prefix('manajemen-labs')->controller(ManajemenLabController::class)->group(function(){
         Route::get('/', 'index')->name('index');

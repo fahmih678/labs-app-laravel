@@ -26,21 +26,21 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="start_time">Start time</label>
-                                    <input type="datetime-local" class="form-control" name="start_time" id="picker">
+                                    <input type="text" class="form-control" name="start_time" id="datepicker">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="end_time">End time</label>
-                                    <input type="datetime-local" class="form-control" name="end_time" id="picker">
+                                    <input type="text" class="form-control" name="end_time" id="datepicker2">
                                 </div>
                             </div>
-                            
-                            <div class="col-lg-6" @if (Auth::user()->instansi?->code == 'uns')  hidden @endif>
-                                <div class="form-group" >
+
+                            <div class="col-lg-6" @if (Auth::user()->instansi?->code == 'uns') hidden @endif>
+                                <div class="form-group">
                                     <label for="invoice">Invoice</label>
                                     <input type="file" class="form-control" id="invoice" name="invoice"
-                                        placeholder="Upload here"  >
+                                        placeholder="Upload here">
                                 </div>
                             </div>
                         </div>
@@ -58,6 +58,27 @@
     </div>
 @endsection
 
+@push('style')
+    <link rel="stylesheet" type="text/css" href="{{ asset('addon/datepicker/jquery.datetimepicker.css') }}" />
+@endpush
+
 @push('script')
-    <script></script>
+    <script src="{{ asset('addon/datepicker/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('addon/datepicker/jquery.datetimepicker.full.js') }}"></script>
+    <script>
+        jQuery.datetimepicker.setLocale('en');
+        $('#datepicker').datetimepicker({
+            step: 30,
+            minDate: '-1969/12/31',
+            minTime: '07:00' || true,
+            maxTime: '21:00',
+            allowTimes: [],
+        });
+        $('#datepicker2').datetimepicker({
+            step: 30,
+            minDate: '-1969/12/31',
+            minTime: '07:00' || true,
+            maxTime: '21:00',
+        });
+    </script>
 @endpush

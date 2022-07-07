@@ -19,4 +19,11 @@ class ManajemenUserController extends Controller
         ]);
         return redirect()->route('admin.manajemen-user.index')->with('success', 'User has been approved');
     }
+
+    public function disapprove(Request $request){
+        $user = User::select('id', 'is_active')->find($request->input('users_id'))->update([
+            'is_active' => 0,
+        ]);
+        return redirect()->route('admin.manajemen-user.index')->with('success', 'User has been disapproved');
+    }
 }

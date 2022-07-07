@@ -14,7 +14,7 @@
                             <div class="new-user-table-lay">
                                 <table class="table table-bordered new-user-table">
                                     <tbody>
-                                        @if (!($newUser->isEmpty()))
+                                        @if (!$newUser->isEmpty())
                                             @foreach ($newUser as $user)
                                                 <tr>
                                                     <td>{{ $user->email }}</td>
@@ -57,12 +57,22 @@
                                                 <tr>
                                                     <td>{{ $user->email }}</td>
                                                     <td>{{ $user->username }}</td>
-                                                    <td>
+                                                    <td style="">
                                                         @php
-                                                            $roleName = $user->roles->first()->name
+                                                            $roleName = $user->roles->first()->name;
                                                         @endphp
-                                                        <a class="btn @if($roleName == 'member') btn-status @elseif($roleName == 'admin') btn-danger  @endif">{{ $roleName }}</a>
+                                                        <a
+                                                            class="btn @if ($roleName == 'member') btn-status @elseif($roleName == 'admin') btn-danger @endif">{{ $roleName }}</a>
                                                         {{-- <a class="btn btn-primary">Detail</a> --}}
+                                                        <form action="{{ route('admin.manajemen-user.disapprove') }}"
+                                                            method="post">
+                                                            @csrf
+                                                            {{ method_field('PUT') }}
+                                                            <input type="text" value="{{ $user->id }}"
+                                                                name="users_id" hidden>
+                                                            <button type="submit"
+                                                                class="btn btn-primary">Disapprove</button>
+                                                        </form>
                                                     </td>
                                                 </tr>
                                             @endforeach
