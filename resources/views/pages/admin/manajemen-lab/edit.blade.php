@@ -41,6 +41,16 @@
                                     <input type="text" class="form-control" id="price" name="price"
                                         value="{{ $lab->price }}" placeholder="Masukkan nominal harga lab" />
                                 </div>
+                                <div class="mb-3">
+                                    <label for="open_hour" class="form-label">Open Hour</label>
+                                    <input type="time" class="form-control" id="open_hour" name="open_hour"
+                                        placeholder="Masukkan waktu awal buka" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="close_hour" class="form-label">Close Hour</label>
+                                    <input type="time" class="form-control" id="close_hour" name="close_hour"
+                                        placeholder="Masukkan waktu awal buka" />
+                                </div>
                             </div>
                             {{-- <div class="row">
                                 <div class="col-6">

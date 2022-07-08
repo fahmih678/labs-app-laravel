@@ -13,6 +13,8 @@ use App\Http\Controllers\{
     MemberController,
     LabReservationController,
 };
+use Laravel\Fortify\Contracts\LogoutResponse;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,6 +30,11 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/dashboard', function(){
     $user = Auth::user();
     $user = User::find($user->id);
+
+    if(!$user->is_active){
+        Auth::logout();
+        return redirect('/login');
+    }
 
     if($user->hasRole('admin')){
         return redirect('/admin');
